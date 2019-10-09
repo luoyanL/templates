@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>
+        道一云|中台 统一认证
+    </title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- <script th:src="@{{basePath}/qwzt/js/jquery-1.7.2.min.js(basePath=${BASE_PATH})}"></script> -->
+    <script src="static/qwzt/js/jquery-1.7.2.min.js"></script>
+    <!-- <script th:src="@{{basePath}/qwzt/js/3rd-plug/jquery/jquery.form.js(basePath=${BASE_PATH})}"></script> -->
+    <script src="static/qwzt/js/3rd-plug/jquery/jquery.form.js"></script>
+    <link rel="icon" href="/favicon.ico"/>
+    <!-- <link th:href="@{{basePath}/css/login/index.19e8e7fe.css(basePath=${BASE_PATH})}" rel="stylesheet"/> -->
+    <link href="static/css/login/index.19e8e7fe.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="static/css/login/index.css">
+    <script src="static/js/popupComponent/popup.js"></script>
+</head>
+
+<body>
+<div class="login-page">
+    <a class="logo" href="#">
+        <!-- <img th:src="@{{basePath}/img/logo.5d562571.png(basePath=${BASE_PATH})}" alt=""/> -->
+        <img src="static/img/logo.5d562571.png" alt=""/>
+    </a>
+    <!-- <form id="login_form" th:action="@{{basePath}/userNamePasswordLogin(basePath=${BASE_PATH})}" class="login-form" method="POST"> -->
+        <form id="login_form" action="#" class="login-form" method="POST">
+            <div id="pwdLogin">
+                        <div class="toggleLogin">
+                            <img src="static/img/tip.png" alt="" class="verticalAlign" id="code-login-tip">
+                            <img src="static/img/codeIcon.png" alt="" class="verticalAlign" id="code-login-img">
+                        </div>
+                        <h1 id="loginTitle" class="login-form_title">账号登录</h1>
+                        <input id="username" class="login-form_input" name="username" type="text" placeholder="请输入账号"/>
+                        <input  id ="password" class="login-form_input" name="password" type="password" placeholder="请输入密码"/>
+                        <input type="hidden"  name="LOGIN_USER_TYPE" th:value="admin"/>
+                        <input type="hidden"  name="authUrlCode" th:value="${authUrlCode}"/>
+                        <input id="vertification" type="text" class="login-form_input verticalAlign" name="vertification" placeholder="验证码"/>
+                        <a href="javascript:;" id="changeCode" class="login-form_input verticalAlign">
+                            <img src="" alt="图片加载失败" id="vertificationImg"/>
+                        </a>
+                        <button id="login_btn" class="login-form_btn" type="button">
+                            <i class="icon-jiazai iconfont loading"></i>登录
+                        </button>
+            </div>
+            <div id="codeLogin">
+                    <div class="toggleLogin">
+                            <img src="static/img/pc.png" alt="" class="verticalAlign" id="pwd-login-img">
+                        </div>
+                    <h1 id="loginTitle" class="login-form_title">扫码登录</h1>
+                    <iframe id="codeIframe" src="http://qywx.qiweioa.cn/wwopen/sso/qrConnect?appid=wlc728fe3880&redirect_uri=http%3A%2F%2Fdevauth.do1zt.xyz%2Fsys-auth%2FwxPrivateAuthCallBack%3FappId%3D2000060%26authUrlCode%3Dc10c6b0f-7482-4d06-930a-335c98db8652&agentid=1000746&state=web_login@gyoss9&href=http://qa.do1zt.xyz/static/scan.css&login_type=jssdk" frameborder="0" scrolling="no" width="100%"></iframe>
+                    <p class="code-tip">用企业微信扫码登录</p>
+            </div>
+    </form>
+
+    <!--<div class="copyright">
+        广东道一信息技术股份有限公司版权所有
+    </div>-->
+</div>
+
+
+<script type="text/javascript">
+    /**
+     * 页面加载完毕之后自动加载账号信息，并判断是否直接登录。
+     */
+    $(document).ready(function () {
+        // 判断是否可以二维码登录
+        var url=true;
+        if(url){
+            $(".toggleLogin").show();
+        }
+        else{
+            $(".toggleLogin").hide();
+        }
+        // 显示验证码
+        var codeUrl="http://devauth.do1zt.xyz/api/sys-authorize/dsfcaptcha.jpg?uuid=ea3aaae7-45ca-4d09-8569-26a62c46f08c";
+        function codeImg(){
+            $("#vertificationImg").attr('src',codeUrl)
+        }
+        codeImg();
+        // 切换验证码
+        $("#changeCode").on('click',function(){
+            codeImg()
+        })
+        // 切换至扫码登陆
+        $("#code-login-img").on('click',function(){
+            console.log(1)
+            $("#codeLogin").show();
+            $("#pwdLogin").hide();
+        })
+        // 切换至密码登陆
+        $("#pwd-login-img").on('click',function(){
+            $("#pwdLogin").show();
+            $("#codeLogin").hide();
+        })
+        
+        /*提交前判断*/
+        $('#login_btn').on('click', function () {
+            if ($("#username").val() == "") {
+                $.alertMsg({type:'warning',content:'提示信息：请输入账号',time:1000})
+                return false;
+            }
+            if ($("#password").val() == "") {
+                $.alertMsg({type:'warning',content:'提示信息：请输入密码',time:1000})
+                return false;
+            }
+            $("#login_form").ajaxSubmit({
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    // window.top.location.href = "[[@{{basePath}/view/loginSuccess(basePath=${BASE_PATH})}]]";
+                    window.top.location.reload();
+                },
+                error: function (result) {
+
+                    console.error(result.responseText);
+                    if (typeof(result.responseText.desc) == undefined) {
+                        $.alertMsg({type:'warning',content:'提示信息：网络异常',time:1000})
+                    } else {
+                        var response = JSON.parse(result.responseText);
+                        if (response.desc.indexOf("Bad credentials") != -1) {
+                            $.alertMsg({type:'warning',content:'提示信息：账号或密码验证失败',time:1000})
+                        } else {
+                            $.alertMsg({type:'warning',content:'提示信息：服务繁忙,请稍后再试',time:1000})
+
+                        }
+                    }
+
+                }
+            });
+        });
+    });
+
+</script>
+
+<!-- <script type="text/javascript" th:src="@{{basePath}/js/runtime.6fee619b.js(basePath=${BASE_PATH})}"></script> -->
+<!-- <script type="text/javascript" th:src="@{{basePath}/js/runtime.6fee619b.js(basePath=${BASE_PATH})}"></script> -->
+<script type="text/javascript" src="static/js/chunk/login/index.21f57752.js"></script>
+<script type="text/javascript" src="static/js/chunk/login/index.21f57752.js"></script>
+</body>
+
+</html>
