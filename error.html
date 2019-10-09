@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>提示</title>
+    <meta name="description" content="" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <style>
+        *{margin:0;padding:0;}
+        html,body{font-family:"微软雅黑";font-size:62.5%;color:#333;}
+        .wrap{position:relative;overflow:hidden;width:100%;}
+        .jump_tips{position:fixed;top:40%;left:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);max-width:615px;width:80%;text-align:center;line-height:25px;}
+        .j_tips_text{margin:1.5rem 0 2.5rem;}
+        @media screen and (min-width:320px) and (max-width:600px){
+            body{font-size:16px;}
+        }
+        @media screen and (min-width:600px){
+            body{font-size:18px;}
+            .j_tips_text{margin:2rem 0 4rem;}
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="wrap_inner">
+        <div class="jump_tips">
+            <div class="j_tips_img"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCMEEzQTE4RDY0RTcxMUU2QTk3Nzg5MjhFMDc4RkYwQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCMEEzQTE4RTY0RTcxMUU2QTk3Nzg5MjhFMDc4RkYwQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkIwQTNBMThCNjRFNzExRTZBOTc3ODkyOEUwNzhGRjBDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkIwQTNBMThDNjRFNzExRTZBOTc3ODkyOEUwNzhGRjBDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+pyTdFQAAB11JREFUeNrsXVtsVFUU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"/></div>
+            <div class="j_tips_text" id="j_tips_text" th:text="${errorMsg}">服务累坏了，请稍候重试</div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

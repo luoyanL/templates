@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>设置企微云登陆账户</title>
+    <link th:href="@{{basePath}/qwzt/css/bootstrap.css(basePath=${BASE_PATH})}" rel="stylesheet">
+    <link th:href="@{{basePath}/qwzt/css/do1.css(basePath=${BASE_PATH})}" rel="stylesheet">
+    <script th:src='@{{basePath}/qwzt/js/jquery-1.7.2.min.js(basePath=${BASE_PATH})}'></script>
+    <script th:src="@{{basePath}/qwzt/js/3rd-plug/jquery/jquery.form.js(basePath=${BASE_PATH})}"></script>
+    <!--<script th:src="@{/qwzt/js/3rd-plug/jquery/jquery.jcryption/jquery.jcryption.3.1.0.js}"></script>-->
+    <style>
+        .logoNav {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            max-width: 1200px;
+        }
+
+        .yun .form-group {
+            margin-left: -50px;
+            margin-bottom: 25px
+        }
+
+        .container {
+            font-size: 16px
+        }
+
+        .subsucceed_l {
+            border-right: 1px solid #ddd;
+            width: 50%;
+            float: left;
+        }
+
+        .subsucceed_r {
+            float: left;
+            width: 48%;
+            padding-left: 50px;
+        }
+
+        a.subsucceedBtn {
+            color: white;
+            display: block;
+            width: 280px;
+            height: 47px;
+            background-color: #ff9600;
+            text-align: center;
+            line-height: 48px;
+            font-size: 18px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        a.subsucceedBtn:hover {
+            background-color: #ffa500
+        }
+
+        .subsucceed {
+            background-color: #fff;
+            padding: 60px 0;
+            width: 760px;
+            margin: 0 auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 60px;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        .subsucceed_r p {
+            padding-left: 24px
+        }
+
+        .subsucceed_r .c999 {
+            color: #999;
+        }
+
+        .subsucceed_r .mt40 {
+            margin-top: 30px
+        }
+
+        .subsucceed_l p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .subsucceed_l img {
+            width: 160px;
+        }
+
+        .subsucceed_l .c999 {
+            color: #999;
+        }
+
+        .haveqyh {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-bottom: 20px
+        }
+
+        .haveqyh a:hover {
+            color: #ffa500;
+            text-decoration: underline;
+        }
+
+        div.error {
+            font-size: 14px;
+            margin-top: 0px;
+            padding-left: 35px;
+        }
+
+        .form-control {
+            height: 40px
+        }
+
+        h2 {
+            margin: 5px;
+            font-size: 28px;
+        }
+
+        input {
+            border-radius: 5px
+        }
+
+        input[type="text"], [type="password"] {
+            font-size: 16px;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #aaa !important;
+        }
+
+        input:-moz-placeholder {
+            color: #aaa !important;
+        / Mozilla Firefox 4 to 18 /
+        }
+
+        input::-moz-placeholder {
+            color: #aaa !important;
+        / Mozilla Firefox 19 + /
+        }
+
+        input:-ms-input-placeholder {
+            color: #aaa !important;
+        / Internet Explorer 10 + * /
+        }
+
+        .yun .form-horizontal .control-label {
+            padding-top: 10px
+        }
+
+        .form {
+            margin-top: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .ce {
+            color: #ff9600
+        }
+
+        .ce:hover {
+            color: #ffa500;
+            text-decoration: underline;
+        }
+
+        .yun .form .submit {
+            width: 400px;
+            height: 48px;
+            margin: 10px 0 30px 20%;
+            border-radius: 5px;
+            font-size: 18px;
+            background: #ff9600;
+        }
+
+        .yun .form .submit:hover {
+            background: #ffa500
+        }
+
+        #usertops {
+            color: #666
+        }
+
+        .textstep {
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .tlist {
+            margin-left: -20px;
+            text-align: left;
+            margin-top: 20px
+        }
+
+        .tlist li {
+            border-left: 1px solid #d9d9d9;
+            padding-left: 15px;
+            margin-top: 15px
+        }
+
+        .tlist li:before {
+            content: '';
+            border: 6px solid #fff;
+            background-color: #ff9600;
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 17px;
+            margin-left: -27px;
+            margin-bottom: -5px;
+            margin-right: 6px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body style="background:#eee">
+<div class="wrap-header">
+    <div id="header">
+        <div class="inner-header">
+            <div class="logoNav clearfix">
+                <img id="headLogo" th:src="@{{basePath}/qwzt/images/logo.png(basePath=${BASE_PATH})}">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="content text-left yun w760" style="margin-top:50px">
+        <div class="form" style="background:#fff" id="fromdiv">
+            <div class="yun_top" id="topdiv">
+                <h2 class="text-center mt50 mb15 fz26 c333">设置企微云登陆账户</h2>
+                <div id="usertops" class="tcenter fz16 c999">您已绑定过其他企业的企微云账户，需为当前企业创建新的登录账户
+                    <br>设置完成后，可以直接扫码登录
+                </div>
+            </div>
+            <form class="form-horizontal" th:action="@{{basePath}/portal/userLoginAction!weixinLoginBinding.action(basePath=${BASE_PATH})}"
+                  onsubmit="return false;" method="post" accept-charset="utf-8" id="form">
+                <div class="form-group mt40" style="margin-bottom: 15px;">
+                    <label class="col-md-3 control-label">企业名称</label>
+                    <div class="col-md-9 fz16 c333" id="companyName" style="line-height: 40px;"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">管理登录账户<span class="red">*</span></label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="companyaccount" placeholder="不支持中文，推荐使用手机号或邮箱">
+                    </div>
+                    <div class="col-md-9 col-md-offset-3 error" id="accountErr">请填写邮箱或手机号注册，支持字母、数字</div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">登录密码<span class="red">*</span></label>
+                    <div class="col-md-9">
+                        <input type="password" class="form-control" id="password" placeholder="最短6位，区分大小写，限字母、数字或英文符号">
+                    </div>
+                    <div class="col-md-9 col-md-offset-3 error" id="passwordErr">请填写6~20位字符，不能为纯数字、纯字母</div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">确认密码<span class="red">*</span></label>
+                    <div class="col-md-9">
+                        <input type="password" class="form-control" id="enterpassword" placeholder="再次输入一致的登录密码">
+                    </div>
+                    <div class="col-md-9 col-md-offset-3 error" id="enterPwdErr">密码不一致</div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" value="提交" class="submit col-md-9 col-md-offset-3"
+                           id="formButton">
+                </div>
+            </form>
+            <form id="id_form_login" th:action="@{{basePath}/j_spring_security_check(basePath=${BASE_PATH})}" method="post" autocomplete="off">
+                <input type='hidden' name='_spring_security_remember_me' value="true"/>
+                <input type='hidden' name='dqdp_csrf_token' value="[[${session.dqdp_csrf_token}]]"/>
+                <input type='hidden' name="j_username" id="j_username">
+                <input type='hidden' name="j_password" id="j_password">
+            </form>
+        </div>
+    </div>
+</div>
+<div><iframe th:replace="qwzt/msgBoxs::html"></iframe></div>
+<script>
+    var isPass = "1";
+    var password_num = 0;
+    // $(function () {
+    // $('#form').jCryption({
+    //     beforeEncryption: function () {
+    //         if (isPass == "0") {
+    //             _alert("", '管理账号已存在,请换一个账号');
+    //             return false;
+    //         }
+    //         if ($('#companyaccount').val().length == 0) {
+    //             $('#accountErr').show();
+    //             $('#accountErr').html('管理员账号不能为空');
+    //             $('#companyaccount').focus();
+    //             return false;
+    //         }
+    //         if ($('#companyaccount').val().indexOf(' ') > -1) {
+    //             $('#accountErr').show();
+    //             $('#accountErr').html('管理员账号不能有空格');
+    //             $('#companyaccount').focus();
+    //             return false;
+    //         }
+    //         if (!(/^[0-9a-zA-Z]([a-zA-Z0-9_@\.]{4,30})+$/).test($('#companyaccount').val())) {
+    //             $('#accountErr').show();
+    //             $('#accountErr').html('管理员账号必须字母、数字或者英文符号组合');
+    //             $('#companyaccount').focus();
+    //             return false;
+    //         }
+    //         if (password_num == 0) {
+    //             $('#password').focus();
+    //             return false;
+    //         }
+    //         if (($('#enterpassword').val() != $('#password').val())) {
+    //             $('#enterpassword').focus();
+    //             return false;
+    //         }
+    //         $('#accountErr').hide();
+    //         return true;
+    //     },
+    //     finishEncryption: function () {
+    //         $('#form').ajaxSubmit({
+    //             dataType: 'json',
+    //             async: false,
+    //             data: {
+    //                 loginId: "${param.id}",
+    //                 state: "${param.state}",
+    //                 isAutoCreate: 1,
+    //                 j_username: $("#companyaccount").val(),
+    //                 j_password: $("#password").val()
+    //             },
+    //             dataType: "json",
+    //             success: function (result) {
+    //                 if (result.code == "0") {
+    //                     $("#j_username").val($("#companyaccount").val());
+    //                     $("#j_password").val($("#password").val());
+    //                     $("#id_form_login").submit();
+    //                 } else {
+    //                     $("#j_username").val("");
+    //                     $("#j_password").val("");
+    //                     _alert("提示", result.desc);
+    //                 }
+    //                 isPass = "1";
+    //             },
+    //             error: function () {
+    //                 _alert("", "系统繁忙");
+    //                 isPass = "1";
+    //             }
+    //         });
+    //     }
+    // });
+    //
+    //
+    // //获取企业名称
+    // <%--$.ajax({--%>
+    //     <%--url: "${baseURL}/portal/experienceapplication/expappAction!autoAbutmentTOPage.action",--%>
+    //     <%--type: "POST",--%>
+    //     <%--data: {id: "${param.id}"},--%>
+    //     <%--dataType: "json",--%>
+    //     <%--success: function (result) {--%>
+    //         <%--if (result.code == "0") {--%>
+    //             <%--$("#companyName").html(result.data.name);--%>
+    //         <%--} else {--%>
+    //             <%--_alert("", result.desc);--%>
+    //         <%--}--%>
+    //     <%--},--%>
+    //     <%--error: function () {--%>
+    //         <%--_alert("", "服务繁忙");--%>
+    //     <%--}--%>
+    // <%--})--%>
+
+
+    $(document).ready(function () {
+        /*提交前判断*/
+        $('#formButton').on('click', function () {
+            if (isPass == "0") {
+                _alert("", '管理账号已存在,请换一个账号');
+                return false;
+            }
+            if ($('#companyaccount').val().length == 0) {
+                $('#accountErr').show();
+                $('#accountErr').html('管理员账号不能为空');
+                $('#companyaccount').focus();
+                return false;
+            }
+            if ($('#companyaccount').val().indexOf(' ') > -1) {
+                $('#accountErr').show();
+                $('#accountErr').html('管理员账号不能有空格');
+                $('#companyaccount').focus();
+                return false;
+            }
+            if (!(/^[0-9a-zA-Z]([a-zA-Z0-9_@\.]{4,30})+$/).test($('#companyaccount').val())) {
+                $('#accountErr').show();
+                $('#accountErr').html('管理员账号必须字母、数字或者英文符号组合');
+                $('#companyaccount').focus();
+                return false;
+            }
+            if (password_num == 0) {
+                $('#password').focus();
+                return false;
+            }
+            if (($('#enterpassword').val() != $('#password').val())) {
+                $('#enterpassword').focus();
+                return false;
+            }
+            $('#accountErr').hide();
+            $('#form').ajaxSubmit({
+                dataType: 'json',
+                async: false,
+                data: {
+                    loginId: "${param.id}",
+                    state: "${param.state}",
+                    isAutoCreate: 1,
+                    j_username: $("#companyaccount").val(),
+                    j_password: $("#password").val()
+                },
+                dataType: "json",
+                success: function (result) {
+                    if (result.code == "0") {
+                        $("#j_username").val($("#companyaccount").val());
+                        $("#j_password").val($("#password").val());
+                        $("#id_form_login").submit();
+                    } else {
+                        $("#j_username").val("");
+                        $("#j_password").val("");
+                        _alert("提示", result.desc);
+                    }
+                    isPass = "1";
+                },
+                error: function () {
+                    _alert("", "系统繁忙");
+                    isPass = "1";
+                }
+            });
+        });
+        $('#companyaccount').blur(function () {
+            if ($('#companyaccount').val().length == 0) {
+                $('#accountErr').show();
+                $('#accountErr').html('管理员账号不能为空');
+                return false;
+            }
+            if ($('#companyaccount').val().indexOf(' ') > -1) {
+                $('#accountErr').show();
+                $('#accountErr').html('管理员账号不能有空格');
+                return false;
+            }
+            if (!(/^[0-9a-zA-Z]([a-zA-Z0-9_@\.]{4,30})+$/).test($('#companyaccount').val())) {
+                $('#accountErr').show();
+                $('#accountErr').html('管理员账号必须字母、数字或者英文符号组合');
+                return false;
+            }
+
+            $('#accountErr').hide();
+            //验证账号
+            var name = $('#companyaccount').val();
+            $.ajax({
+                url: "/portal/experienceapplication/expappAction!checkName.action",
+                type: "POST",
+                data: {name: name},
+                dataType: 'json',
+                async: false,
+                success: function (result) {
+                    if (result.code == "4") {
+                        $("#accountErr").html(result.desc);
+                        $("#accountErr").show();
+                        isPass = "0";
+                    } else {
+                        isPass = "1";
+                    }
+                }
+            });
+        });
+        $('#password').blur(function () {
+            var password = $('#password').val();
+            if (password.length < 6) {
+                $("#passwordErr").html('密码长度不能少于6位');
+                $("#passwordErr").show();
+                return false;
+            }
+            var count = 1;
+            var chars = password.split("");
+            for (var i = 1; i < password.length; i++) {
+                if (chars[i] == chars[i - 1]) {
+                    count++;
+                    if (count > 2) {
+                        $("#passwordErr").html('密码中不能含有连续相同的3个字符');
+                        $("#passwordErr").show();
+                        return false;
+                    }
+                } else {
+                    count = 1;
+                }
+            }
+            if (!(/(\d+.*[a-zA-z]+)|([a-zA-z]+.*\d+)/).test($('#password').val())) {
+                for (var j = 0; j < password.length; j++) {
+                    if ((/^[A-Za-z]$/).test(chars[j])) {
+                        $("#passwordErr").show();
+                        $("#passwordErr").html('密码不能是纯字母');
+                        return false;
+                    } else if ((/^[0-9]$/).test(chars[j])) {
+                        $("#passwordErr").show();
+                        $("#passwordErr").html('密码不能是纯数字');
+                        return false;
+                    }
+                }
+
+                return false;
+            } else {
+                $("#passwordErr").hide();
+                password_num++;
+                console.log(password_num);
+            }
+        });
+        $('#enterpassword').blur(function () {
+            if (($('#enterpassword').val() != $('#password').val())) {
+                $("#enterPwdErr").show();
+                return false;
+            } else {
+                $("#enterPwdErr").hide();
+            }
+        });
+    })
+    ;
+</script>
+</body>
+</html>

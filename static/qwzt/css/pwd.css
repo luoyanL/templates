@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+/**
+ *
+ * @authors Your Name (you@example.org)
+ * @date    2016-04-15 14:30:58
+ * @version $Id$
+ */
+*{margin:0;padding:0;}
+body{color:#666;}
+label{font-weight:normal;}
+.btn{padding:5px 20px;_padding:5px 20px;font-size:14px;line-height:30px;-webkit-border-radius:4px;border-radius:4px;color:#333333;background-color:#fff;border:1px solid #cccccc;cursor:pointer;}
+.btn:hover{background-color:#f7f7f7;color:#333333;}
+.twoBtn{padding:5px 20px;*padding:4px 20px;_padding:5px 20px;}
+.orangeBtn{background:#ff9600;color:#fff;border:1px solid #e2750a;}
+.orangeBtn:hover{background:#ff4e00;color:#fff;border:1px solid #cf4306;}
+.pwd_w340{width:340px;}
+.pwd_w180{width:180px;}
+.pwd_box{width:760px;margin:60px auto;border:1px #ddd solid;background-color:#fff;border-radius:5px;padding:75px 169px;}
+.pwd_box h2{font-size:26px;color:#333;text-align:center;line-height:30px;}
+.step_line{padding-top:30px;margin:30px 0;}
+.step_line.step_1{background:url(../images/step1.png) no-repeat center 0;}
+.step_line.step_2{background:url(../images/step2.png) no-repeat center 0;}
+.step_line.step_3{background:url(../images/step3.png) no-repeat center 0;}
+.step_line li{float:left;width:58px;text-align:right;color:#666;}
+.pwd_form{width:340px;margin:0 auto;}
+.pwd_form input[type="radio"]{margin:-2px 5px 0 0;vertical-align:middle;}
+.pwd_form a{color:#666;}
+.pwdInput{padding:0 10px;border:1px #cccccc solid;height:46px;line-height:36px;border-radius:5px;box-shadow:inset 0 1px 3px rgba(0,0,0,0.1);}
+.errInput{border-color:rgba(255,102,102,0.8);box-shadow:inset 0 1px 3px rgba(0,0,0,0.1);}
+.pwd_btn{width:338px;height:48px;line-height:48px;text-align:center;font-size:18px;display:inline-block;padding:0;}
+.pwd_msg{height:40px;line-height:40px;display:block;margin:0 10px;}
+.pwd_msg.pwd_msg_error{color:#ff6666;}
+.pwd_mail{width:395;line-height:28px;margin:0 auto;text-align:center;}
+.pwd_mail p{font-size:16px;margin-top:10px;}
+.pwd_mail a{color:#333;}
+.two_btn{color:#666;}
+.btn_yanz{width:150px;line-height:46px;display:inline-block;padding:0;margin-left:5px;font-size:16px;}
+.btn_yaned{width:150px;height:48px;line-height:48px;display:inline-block;padding:0;color:#fff;text-align:center;margin-left:5px;background-color:#bbbbbb;border:none;border-radius:4px;font-size:16px;}
+.pwd_form select{width:340px;height:48px;line-height:48px;box-shadow:inset 0 1px 3px rgba(0,0,0,0.1);border:1px solid #cccccc;-webkit-border-radius:4px;border-radius:4px;padding:4px;}
+.form_span{margin:15px 0 5px 10px;display:block;}
+.pwd_3{width:340px;margin:0 auto;text-align:center;}
+.pwd_3 p{line-height:26px;font-size:16px;}

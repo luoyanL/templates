@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["404/index"],{"./src/404/index.js":function(s,n,c){"use strict";c("./src/404/index.scss")},"./src/404/index.scss":function(s,n,c){}},[["./src/404/index.js","runtime"]]]);

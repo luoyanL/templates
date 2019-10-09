@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+input {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+a {
+    text-decoration: none;
+    color: #f87b00;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+::-webkit-input-placeholder {
+    color: #ddd;
+}
+
+::-moz-placeholder {
+    color: #ddd;
+}
+
+/* 注册页面1 */
+
+.qwui-register_wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url(../images/register_bg.png?v2.0) repeat-x center bottom;
+}
+
+.register_inside {
+    margin: 144px auto 0;
+    width: 968px;
+    text-align: center;
+}
+
+.register_inside_head_logo {
+    margin: 0 auto;
+    width: 168px;
+    height: 30px;
+    background: url(../images/register_logo.png);
+}
+
+.register_inside_head h2 {
+    margin: 22px 0 11px;
+    color: #000;
+    font-size: 30px;
+    line-height: 1.4;
+}
+
+.register_inside_head p {
+    color: #B1B1B1;
+    font-size: 16px;
+}
+
+.register_inside_sec {
+    margin: 38px 0 47px;
+}
+
+.register_column_item {
+    position: relative;
+    margin-bottom: 20px;
+    line-height: 38px;
+}
+
+.register_inputText {
+    padding: 0 15px;
+    width: 362px;
+    height: 38px;
+    border: 1px #C7C7C7 solid;
+    border-radius: 2px;
+}
+
+.qwui-register_wrap .register_inputText {
+    outline: none;
+}
+
+.register_submit_btn {
+    display: inline-block;
+    width: 362px;
+    height: 42px;
+    line-height: 42px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #EB651A;
+}
+
+.register_error {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 680px;
+    color: #F05A5A;
+}
+
+/* 注册页面2 */
+
+.register_gray {
+    background-color: #E9EAEB;
+}
+
+.register_garyWrap {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 28px 169px;
+    width: 800px;
+    height: 550px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+}
+
+.register_garyWrap .register_inside_head h2 {
+    color: #423E5B;
+}
+
+.register_column_Grayitem {
+    margin-bottom: 15px;
+    text-align: left;
+    line-height: 35px;
+}
+
+.register_column_item_title {
+    float: left;
+    width: 100px;
+    color: #787878;
+}
+
+.register_column_item_field {
+    margin-left: 100px;
+}
+
+.register_garyWrap .register_inputText {
+    height: 35px;
+}
+
+.register_input_msg {
+    color: #787878;
+    font-size: 12px;
+}
+
+.register_input_error {
+    display: none;
+    color: #F05A5A;
+    font-size: 12px;
+}
+
+.register_column_item_field.error .register_inputText {
+    border: 1px #F05A5A solid;
+}
+
+.register_column_item_field.error .register_input_msg {
+    color: #F05A5A;
+}
+
+.register_submit_blueBtn {
+    display: inline-block;
+    width: 100px;
+    height: 38px;
+    line-height: 38px;
+    color: #fff;
+    font-size: 16px;
+    background: linear-gradient(180deg, rgba(66, 142, 211, 1), rgba(37, 112, 170, 1));
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

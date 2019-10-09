@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:src="@{{basePath}/qwzt/js/jquery-1.7.2.min.js(basePath=${BASE_PATH})}"></script>
+    <script th:src="@{{basePath}/qwzt/js/3rd-plug/jquery/jquery.form.js(basePath=${BASE_PATH})}"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+    /**
+     * 页面加载完毕之后自动加载账号信息，并判断是否直接登录。
+     */
+    $(document).ready(function () {
+        var url =  "[[${session.AUTH_REDIRECTURL}]]";
+        if(url!=null && url != ''){
+            window.location.href = url.replace(new RegExp("&amp;",'g'),"&");
+        }
+
+    });
+</script>
+</body>
+
+</html>

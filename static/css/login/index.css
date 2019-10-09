@@ -1,0 +1,89 @@
+.login-form{
+    width:520px;
+}
+.toggleLogin{
+    position:absolute;
+    right:0px;top:0px;
+}
+.verticalAlign{
+    vertical-align: middle
+}
+#code-login-img,#pwd-login-img{
+    width:54px;
+    cursor:pointer;
+}
+#code-login-tip{
+    width:95px;
+    height:24px;
+}
+#codeIframe{
+    margin-top:-30px;
+    height:290px;
+}
+#vertification{
+    width:199px;
+    height:45px;
+}
+#changeCode{
+    display:inline-block;
+    width:163px;
+    height:38px;
+}
+@media (max-width: 1440px){
+    #codeIframe{
+        height:210px;
+    }
+    #vertification{
+        width:150px;
+        height:34px;
+    }
+    #changeCode{
+        width:130px;
+        height:30px;
+    }
+}
+@media (max-width:1366px){
+    #vertification{
+        width:140px;
+        height:34px;
+    }
+    #changeCode{
+        width:121px;
+        height:27px;
+    }
+    .login-page .login-form_btn{
+        margin-top: 0px;
+        font-size: 16px;
+    }
+}
+@media (max-width:1280px){
+    #code-login-tip{
+        width:70px;
+    }
+    #code-login-img,#pwd-login-img{
+        width:35px;
+    }
+    #codeIframe{
+        height:200px;
+    }
+    #vertification{
+        width:125px;
+        height:34px;
+    }
+    #changeCode{
+        width:110px;
+        height:26px;
+    }
+}
+#vertificationImg{
+    width:100%;height:100%
+}
+#codeLogin{
+    display:none;
+}
+.code-tip{
+    color: #737C84;
+    font-size:13px;
+    text-align:center;
+    margin-top:10px;
+}

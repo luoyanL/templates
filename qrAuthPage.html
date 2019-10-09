@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>
+        道一云|中台 统一认证 扫码页面
+    </title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="/favicon.ico"/>
+    <!-- <link th:href="@{{basePath}/css/login/index.19e8e7fe.css(basePath=${BASE_PATH})}" rel="stylesheet"/> -->
+
+    <!-- <script th:src="@{{basePath}/qwzt/js/jquery-1.7.2.min.js(basePath=${BASE_PATH})}"></script> -->
+    <!-- <script th:src="@{{basePath}/qwzt/js/3rd-plug/jquery/jquery.form.js(basePath=${BASE_PATH})}"></script> -->
+    <link th:href="static/css/login/index.19e8e7fe.css" rel="stylesheet"/>
+
+    <script th:src="static/qwzt/js/jquery-1.7.2.min.js"></script>
+    <script th:src="static/qwzt/js/3rd-plug/jquery/jquery.form.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * 页面加载完毕之后自动加载账号信息，并判断是否直接登录。
+     */
+    $(document).ready(function () {
+        var qrAuthUrl = '[[${QR_AUTH_URL}]]';
+        window.location.href =  qrAuthUrl.replace(new RegExp("&amp;",'g'),"&");;
+    });
+</script>
+</body>
+
+</html>

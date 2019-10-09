@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="企微,企业微信,移动办公">
+    <meta name="description" content="">
+    <title>道一云|企微 - 企业微信官方推荐移动办公品牌</title>
+    <link th:href="@{{basePath}/qwzt/css/style.css(basePath=${BASE_PATH})}" rel="stylesheet" type="text/css">
+    <script th:src='@{{basePath}/qwzt/js/jquery-1.7.2.min.js(basePath=${BASE_PATH})}'></script>
+    <script th:src="@{{basePath}/qwzt/js/3rd-plug/jquery/jquery.form.js(basePath=${BASE_PATH})}"></script>
+    <script th:src='@{{basePath}/qwzt/js/jquery.cookie.js(basePath=${BASE_PATH})}'></script>
+    <script th:src='@{{basePath}/qwzt/js/json.js(basePath=${BASE_PATH})}'></script>
+    <!--<script th:src="@{/js/3rd-plug/jquery/jquery.jcryption/jquery.jcryption.3.1.0.js}"></script>-->
+    <!--&lt;!&ndash;[if IE 6]>-->
+    <!--<script type="text/javascript" th:src="@{/js/DD_belatedPNG_0.0.8a-min.js}"></script>-->
+    <!--<script>-->
+    <!--DD_belatedPNG.fix('.login_box,.ico-uid,.ico-pwd,.login_btn,.regist_btn,.downIphone,.downAndroid');-->
+    <!--</script>-->
+    <!--<![endif]&ndash;&gt;-->
+</head>
+<body>
+<div>
+    <iframe th:replace="qwzt/msgBoxs::html"></iframe>
+</div>
+<div class="frontHome page personal">
+    <div class="wrap-container">
+        <div id="home_container" class="clearfix">
+            <div id="home_main">
+                <div class="inner-main overflow">
+                    <div class="login_box">
+                        <h2><img th:src="@{{basePath}/qwzt/images/personal_logo.png(basePath=${BASE_PATH})}"></h2>
+                        <form id="gerenban" th:action="@{{basePath}/j_spring_security_check(basePath=${BASE_PATH})}" method="post"
+                              autocomplete="off" style="display:none;">
+                            <input type='hidden' name='_spring_security_remember_me' value="true"/>
+                            <input type='hidden' name='LOGIN_USER_TYPE' value="qwPersonal"/>
+                            <input type="hidden"  name="authUrlCode" th:value="${authUrlCode}"/>
+                            <input type='hidden' name='dqdp_csrf_token'
+                                   value="${sessionScope['dqdp_csrf_token']}"/>
+                            <div class="loginFormIpt"><b class="ico ico-uid-mail"></b>
+                                <input class="loginFormTdIpt search-input" tabindex="1" title="请输入账号"
+                                       placeholder="请输入账号" onkeydown="onKeyUp(event)" name="j_username"
+                                       id="gerenban_username" type="text" maxlength="50" value="" autocomplete="on" >
+                                <!--value="${sessionScope['SPRING_SECURITY_LAST_USERNAME']}">-->
+                            </div>
+                            <div id="pwdInputLine" class="loginFormIpt"><b class="ico ico-pwd"></b>
+                                <input class="loginFormTdIpt search-input" tabindex="2" title="请输入密码"
+                                       placeholder="请输入密码" name="j_password" id="gerenban_pass" type='password'
+                                       onkeydown="onKeyUp(event)">
+                                <a class="forget-link fr c999 f12"
+                                   href="http://mp.weixin.qq.com/s?__biz=MzA3ODk1MDcwMw==&mid=200979651&idx=1&sn=cb07c72aefba5acaba19bd8e84b5eb9d"
+                                   target="_blank">忘记账号密码？</a>
+                            </div>
+
+                            <div class="loginFormBtn clearfix">
+                                <button class="login_btn" id="btn_login" type="button" style="width:100%;">登录</button>
+                                <!--<%&#45;&#45;<a href="http://wbg.do1.com.cn" target="_black" class="register_btn" type="button"-->
+                                <!--style="width:100%;">注册</a>&#45;&#45;%>-->
+                            </div>
+                            <!--<div class="form-field form-field-rc loginBoxFooter">-->
+                            <!--<a class=" loginBoxFooter2 relative" target="_blank"-->
+                            <!--href="http://wbg.do1.com.cn">企微官网</a>-->
+                            <!--<span class="f12 c999">|</span>-->
+                            <!--<a href="${baseURL}/oauth2{basePath}orize.do?authType=3&responseType=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getResponseType()}&clientId=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getClientId()}&scope=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getScope()}&redirectUri=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getRedirectUri()}&state=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getState()}">企业微信登录</a>-->
+                            <!--</div>-->
+                        </form>
+                        <div id="wechat_login">
+                            <!--<a th:href="/oauth2{basePath}orize.do?authType=3&responseType=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getResponseType()}&clientId=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getClientId()}&scope=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getScope()}&redirectUri=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getRedirectUri()}&state=${sessionScope['OAUTH_AUTHORIZE_REQUEST'].getState()}"-->
+                            <!--class="wechat_login">-->
+                            <!--<iframe src="http://devauth.do1zt.xyz/sys-auth/oauth2/authorize.do?authType=3&responseType=code&clientId=tongyirenzheng&scope=all&redirectUri=http%253A%252F%252Fwww.baidu.com&state="></iframe>-->
+                            <a th:href="@{{basePath}/oauth2/authorize.do?authType=3&responseType={responseType}&clientId={clientId}&scope={scope}&redirectUri={redirectUri}&state={state}(basePath=${BASE_PATH},responseType=${session.OAUTH_AUTHORIZE_REQUEST.responseType},clientId=${session.OAUTH_AUTHORIZE_REQUEST.clientId},scope=${session.OAUTH_AUTHORIZE_REQUEST.scope},redirectUri=${session.OAUTH_AUTHORIZE_REQUEST.redirectUri},state=${session.OAUTH_AUTHORIZE_REQUEST.state})}"  class="wechat_login">
+                                <img th:src="@{{basePath}/qwzt/images/wechat_logo.png(basePath=${BASE_PATH})}" alt="企业微信">
+                                </br><span class="tip">企业微信登录</span>
+                            </a>
+                            <div class="lfAutoLogin overflow">
+                                <div class="form-field form-field-rc loginBoxFooter">
+                                    <a class=" loginBoxFooter2 relative" target="_blank" href="http://wbg.do1.com.cn">企微官网</a>
+                                    <span class="f12 c999">|</span>
+                                    <a href="#" id="account_login">账号密码登录</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="login_tips">
+                            <a class="login_download_v"
+                               href="https://work.weixin.qq.com/wework_admin/commdownload?platform=win&from=wwindex">下载Windows桌面端</a>
+                            <a class="login_more_detail" target="_blank"
+                               href="https://work.weixin.qq.com/#indexDownload">其他版本 &gt;</a>
+                        </div>
+
+                        <div class="footerInfo">广东道一信息技术股份有限公司版权所有 &copy; 2004-
+                            <!--<%=DateUtil.format(new Date(), "yyyy")%>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        // 账号密码登录控制
+        $('#account_login').on('click', function () {
+            $('#wechat_login').remove();
+            $('#gerenban').show();
+        })
+        $('#j_username').focus();
+        //登录框效果
+        $('.loginFormTdIpt').focus(function () {
+            $(this).parent('.loginFormIpt').addClass('focus')
+        }).blur(function () {
+            $(this).parent('.loginFormIpt').removeClass('focus')
+        });
+
+        //高度自适应
+        function tjheight() {
+            var height = $(window).height();
+            $('#home_main').height(height);
+            if (height < 480) {
+                $('.footerInfo').hide();
+            } else {
+                $('.footerInfo').show();
+            }
+        }
+
+        tjheight();
+        $(window).on('resize', function () {
+            tjheight();
+        })
+
+        // 登录框清空文字
+        $('.search-input').on('input click', function (event) {
+            var input_colse = $('<span class="input_colse"></span>');
+            if ($(this).val().length > 0) {
+                $('.input_colse').remove();
+                $(this).after(input_colse)
+            } else {
+                $('.input_colse').remove();
+            }
+            $('.input_colse').on('click', function () {
+                $(this).prev('.search-input').val('');
+                $(this).remove();
+            })
+        })
+
+        // $('#gerenban').jCryption({
+        //     submitElement: $('#btn_login'),
+        //     beforeEncryption: function () {
+        //         if ($("#gerenban_username").val() == "") {
+        //             _alert("提示信息", "请输入账号");
+        //             return false;
+        //         }
+        //         var password = $('#gerenban_pass').val();
+        //         if (password == "") {
+        //             _alert("提示信息", "请输入密码");
+        //             return false;
+        //         }
+        //         if (password.length < 6) {
+        //             _alert("错误提示", "亲爱的用户，为了你的账号安全，密码要求必须是6位以上的字母数字组合，请重新设置新的密码后再登录");
+        //             return false;
+        //         }
+        //         var count = 1;
+        //         var chars = password.split("");
+        //         for (var i = 1; i < password.length; i++) {
+        //             if (chars[i] == chars[i - 1]) {
+        //                 count++;
+        //                 if (count > 2) {
+        //                     _alert("错误提示", "亲爱的用户，为了你的账号安全，密码中不能含有连续相同的3个字符，请重新设置新的密码后再登录");
+        //                     return false;
+        //                 }
+        //             }
+        //             else {
+        //                 count = 1;
+        //             }
+        //         }
+        //         if (!(/(\d+.*[a-zA-z]+)|([a-zA-z]+.*\d+)/).test(password)) {
+        //             for (var j = 0; j < password.length; j++) {
+        //                 if ((/^[A-Za-z]$/).test(chars[j])) {
+        //                     _alert("错误提示", "亲爱的用户，为了你的账号安全，密码要求必须是6位以上的字母数字组合，请重新设置新的密码后再登录");
+        //                     return false;
+        //                 } else if ((/^[0-9]$/).test(chars[j])) {
+        //                     _alert("错误提示", "亲爱的用户，为了你的账号安全，密码要求必须是6位以上的字母数字组合，请重新设置新的密码后再登录");
+        //                     return false;
+        //                 }
+        //             }
+        //         }
+        //         return true;
+        //     },
+        //     finishEncryption: function ($formElement, encrypted) {
+        //         $formElement.ajaxSubmit({
+        //             dataType: 'json',
+        //             async: false,
+        //             success: function (result) {
+        //                 window.top.location.href = "${baseURL}/jsp/login_success.jsp";
+        //             },
+        //             error: function (result) {
+        //                 console.error(result.responseText);
+        //                 if (typeof(result.responseText.desc) == undefined) {
+        //                     _alert("提示信息", "网络异常");
+        //                 } else {
+        //                     var response = JSON.parse(result.responseText);
+        //                     if (response.desc.indexOf("Bad credentials") != -1) {
+        //                         _alert("提示信息", "账号或密码验证失败");
+        //                     } else {
+        //                         _alert("提示信息", "服务繁忙，请稍后再试.");
+        //                     }
+        //                 }
+        //             }
+        //         });
+        //     }
+        // });
+
+        $('#btn_login').on('click', function () {
+            if ($("#gerenban_username").val() == "") {
+                _alert("提示信息", "请输入账号");
+                return false;
+            }
+            var password = $('#gerenban_pass').val();
+            if (password == "") {
+                _alert("提示信息", "请输入密码");
+                return false;
+            }
+            if (password.length < 6) {
+                _alert("错误提示", "亲爱的用户，为了你的账号安全，密码要求必须是6位以上的字母数字组合，请重新设置新的密码后再登录");
+                return false;
+            }
+            var count = 1;
+            var chars = password.split("");
+            for (var i = 1; i < password.length; i++) {
+                if (chars[i] == chars[i - 1]) {
+                    count++;
+                    if (count > 2) {
+                        _alert("错误提示", "亲爱的用户，为了你的账号安全，密码中不能含有连续相同的3个字符，请重新设置新的密码后再登录");
+                        return false;
+                    }
+                }
+                else {
+                    count = 1;
+                }
+            }
+            if (!(/(\d+.*[a-zA-z]+)|([a-zA-z]+.*\d+)/).test(password)) {
+                for (var j = 0; j < password.length; j++) {
+                    if ((/^[A-Za-z]$/).test(chars[j])) {
+                        _alert("错误提示", "亲爱的用户，为了你的账号安全，密码要求必须是6位以上的字母数字组合，请重新设置新的密码后再登录");
+                        return false;
+                    } else if ((/^[0-9]$/).test(chars[j])) {
+                        _alert("错误提示", "亲爱的用户，为了你的账号安全，密码要求必须是6位以上的字母数字组合，请重新设置新的密码后再登录");
+                        return false;
+                    }
+                }
+            }
+            // $("#gerenban").submit();
+            $("#gerenban").ajaxSubmit({
+                dataType: "json",
+                async: false,
+                success: function (result) {
+                    window.top.location.href =  "[[@{{basePath}/view/QwLoginSuccess(basePath=${BASE_PATH})}]]";
+                },
+                error: function (result) {
+                    console.error(JSON.stringify(result));
+                    if (typeof(result.responseText.desc) == undefined) {
+                        _alert("提示信息", "网络异常");
+                    } else {
+                        var response = JSON.parse(result.responseText);
+                        if (response.desc.indexOf("Bad credentials") != -1) {
+                            _alert("提示信息", "账号或密码验证失败");
+                        } else {
+                            _alert("提示信息", "服务繁忙,请稍后再试.");
+                        }
+                    }
+                }
+            });
+
+        });
+    })
+
+    function onKeyUp(event) {
+        var e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode == 13) $("#btn_login").trigger("click");
+    }
+
+</script>
+</body>
+</html>

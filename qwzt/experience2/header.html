@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div id='header'>
+    <div class="navbar w960">
+
+        <a title="企业微信应用，首选企微云平台"href="http://wbg.do1.com.cn/"class="logo" style="left:0;top:16px;" >
+            <img src="http://wbg.do1.com.cn/templets/default/images/daoyilogo.png" alt="企业微信" style="width:192px;height:36px;">
+        </a>
+        <a href="https://qy.weixin.qq.com/cgi-bin/3rd_info?action=getinfo&t=3rd_isp_cert&uin=578000001" target="_blank" style="position: absolute;left: 210px;top: 23px;">
+            <img style="vertical-align:middle;" src="http://wbg.do1.com.cn/templets/default/images/facilitatorlogo.png" alt="企业微信登录">
+        </a>
+        <ul id="nav1">
+            <li><a href="http://wbg.do1.com.cn/Experience/" class="kt">免费开通</a></li>
+            <li class="login" style="margin-left:10px"><a th:href="${qwyURL}" target="_blank" rel="nofollow">管理平台</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+(function($) {
+    $('li.i').mouseover(function() {
+        $(this).children('.more_nav').show();
+    }).mouseout(function() {
+        $(this).children('.more_nav').hide();
+    })
+}(jQuery));
+</script>

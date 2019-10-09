@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_b-lc_add02</title>
+    <desc>Created with Sketch.</desc>
+    <g id="181114-流程转派" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程转派入口--首次进入" transform="translate(-1013.000000, -263.000000)" fill-rule="nonzero">
+            <g id="01" transform="translate(837.000000, 200.000000)">
+                <g id="ic_b-lc_add02" transform="translate(177.000000, 64.000000)">
+                    <path d="M30,60 C46.5685425,60 60,46.5685425 60,30 C60,13.4314575 46.5685425,0 30,0 C13.4314575,0 0,13.4314575 0,30 C0,46.5685425 13.4314575,60 30,60 Z" id="椭圆形" stroke="#D8D8D8" stroke-dasharray="4"></path>
+                    <g id="选人-copy" transform="translate(16.000000, 16.000000)" fill="#D5D5D5">
+                        <g id="分组-2">
+                            <path d="M13,13 L13,0 L15,0 L15,13 L28,13 L28,15 L15,15 L15,28 L13,28 L13,15 L0,15 L0,13 L13,13 Z" id="ic_b-add"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
